@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Settings } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,35 +31,15 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold text-primary transition-all duration-200 hover:opacity-80">
+            <a href="/" className="text-xl font-bold text-primary transition-all duration-200 hover:opacity-80">
               CareerAI
-            </Link>
+            </a>
           </div>
           
           <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              <Link 
-                to="/" 
-                className={`transition-all duration-200 hover:text-primary ${
-                  location.pathname === '/' ? 'text-primary font-medium' : 'text-gray-700'
-                }`}
-              >
-                Home
-              </Link>
-              <Link 
-                to="/dashboard" 
-                className={`transition-all duration-200 hover:text-primary ${
-                  location.pathname === '/dashboard' ? 'text-primary font-medium' : 'text-gray-700'
-                }`}
-              >
-                Dashboard
-              </Link>
-            </div>
-          </div>
-          
-          <div className="hidden md:block">
-            <Button asChild className="btn-primary" size="sm">
-              <Link to="/dashboard">Get Started</Link>
+            <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <Settings size={16} />
+              <span>API Settings</span>
             </Button>
           </div>
           
@@ -78,29 +58,10 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-gray-200 animate-slide-down">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
-              to="/"
-              className={`block px-3 py-2 rounded-md ${
-                location.pathname === '/' ? 'text-primary font-medium' : 'text-gray-700'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/dashboard"
-              className={`block px-3 py-2 rounded-md ${
-                location.pathname === '/dashboard' ? 'text-primary font-medium' : 'text-gray-700'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Dashboard
-            </Link>
-            <div className="pt-2">
-              <Button asChild className="btn-primary w-full" size="sm">
-                <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
-              </Button>
-            </div>
+            <Button variant="outline" size="sm" className="w-full flex items-center gap-2">
+              <Settings size={16} />
+              <span>API Settings</span>
+            </Button>
           </div>
         </div>
       )}

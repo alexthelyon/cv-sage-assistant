@@ -43,140 +43,47 @@ const Dashboard = () => {
     setIsAnalyzingJob(true);
     setJobDescription(jobDesc);
     
-    // In a real app, you'd call your AI API here
+    // This is where you would call the API with your API key
+    // For now, this is a placeholder
     setTimeout(() => {
-      // Mock data - this would come from the AI in a real app
-      const extractedData = {
-        title: "Senior Frontend Developer",
-        company: "TechInnovate Solutions",
-        requirements: [
-          "5+ years of experience in frontend development",
-          "Expert knowledge of React, JavaScript, TypeScript",
-          "Experience with state management solutions",
-          "Familiarity with testing frameworks",
-          "Strong understanding of responsive design principles",
-          "Knowledge of CI/CD pipelines and version control",
-        ],
-      };
-      
-      setJobData(extractedData);
-      setIsAnalyzingJob(false);
-      
       toast({
-        title: "Job analyzed successfully",
-        description: `We've identified key requirements for the ${extractedData.title} position.`,
+        title: "API key needed",
+        description: "Please add your API key in the dashboard settings to analyze job listings.",
+        variant: "destructive",
       });
-      
-      // Move to next step
-      setStep(2);
-    }, 3000);
+      setIsAnalyzingJob(false);
+    }, 1500);
   };
 
   const handleCVSubmit = (cv: string) => {
     setIsEvaluatingCV(true);
     setCvText(cv);
     
-    // In a real app, you'd call your AI API here
+    // This is where you would call the API with your API key
+    // For now, this is a placeholder
     setTimeout(() => {
-      // Mock data - this would come from the AI in a real app
-      const result = {
-        score: 78,
-        matchedSkills: [
-          "React development experience",
-          "TypeScript knowledge",
-          "Frontend development (6+ years)",
-          "Testing experience (Jest mentioned)",
-          "Version control with Git"
-        ],
-        missingSkills: [
-          "CI/CD pipeline experience (mentioned in requirements)",
-        ],
-        suggestions: [
-          {
-            before: "Senior Frontend Developer with 6+ years of experience in building responsive web applications",
-            after: "Senior Frontend Developer with 6+ years of experience specializing in React, TypeScript, and responsive web applications",
-            reason: "Emphasize the specific technologies mentioned in the job description"
-          },
-          {
-            before: "Implemented a component library using Storybook",
-            after: "Implemented a component library using Storybook, improving team development velocity by 40% and ensuring UI consistency",
-            reason: "Quantify achievements and connect them to business outcomes"
-          },
-          {
-            before: "CSS Frameworks: Tailwind CSS, Material-UI, Styled Components",
-            after: "Add a bullet point for CI/CD experience: 'CI/CD: Familiar with GitHub Actions, Jenkins, and automated deployment pipelines'",
-            reason: "Add missing skill that's important for the role"
-          }
-        ]
-      };
-      
-      setAnalysisResult(result);
-      setIsEvaluatingCV(false);
-      
       toast({
-        title: "CV evaluation complete",
-        description: `Your CV scored ${result.score}% match with the job requirements.`,
+        title: "API key needed",
+        description: "Please add your API key in the dashboard settings to evaluate CVs.",
+        variant: "destructive",
       });
-      
-      // Move to next step
-      setStep(3);
-    }, 3000);
+      setIsEvaluatingCV(false);
+    }, 1500);
   };
 
   const handleGenerateCoverLetter = () => {
     setIsGeneratingCoverLetter(true);
     
-    // In a real app, you'd call your AI API here
+    // This is where you would call the API with your API key
+    // For now, this is a placeholder
     setTimeout(() => {
-      // Mock data - this would come from the AI in a real app
-      const generatedLetter = `${new Date().toLocaleDateString()}
-
-John Doe
-123 Main St
-San Francisco, CA 94122
-john.doe@example.com
-(555) 123-4567
-
-Hiring Manager
-TechInnovate Solutions
-San Francisco, CA
-
-RE: Application for Senior Frontend Developer Position
-
-Dear Hiring Manager,
-
-I am writing to express my strong interest in the Senior Frontend Developer position at TechInnovate Solutions. With over 6 years of specialized experience in React, TypeScript, and responsive web application development, I am excited about the opportunity to contribute to your team's innovative work in developing user-centric applications for enterprise clients.
-
-My experience aligns well with the requirements outlined in your job description:
-
-• As a Senior Frontend Developer at CloudTech Solutions, I led the development of a React-based dashboard that improved user engagement by 35% and migrated a legacy JavaScript codebase to TypeScript, resulting in a 28% reduction in bugs.
-
-• I have implemented component libraries using Storybook, improving team development velocity by 40% while ensuring UI consistency across applications.
-
-• My experience with state management solutions includes Redux and Context API, which I've used to build scalable application architectures.
-
-• I've implemented comprehensive testing strategies using Jest and React Testing Library, achieving 85% code coverage.
-
-• I'm well-versed in responsive design principles, having created interfaces that work seamlessly across all device types.
-
-• While I haven't extensively worked with CI/CD pipelines, I have experience with GitHub Actions and am eager to expand my knowledge in this area.
-
-I'm particularly drawn to TechInnovate Solutions' commitment to work-life balance and collaborative culture. These values are important to me, and I believe they foster the most innovative and sustainable work environments.
-
-I would welcome the opportunity to discuss how my skills and experience can contribute to TechInnovate Solutions' continued success. Thank you for considering my application.
-
-Sincerely,
-
-John Doe`;
-      
-      setCoverLetter(generatedLetter);
-      setIsGeneratingCoverLetter(false);
-      
       toast({
-        title: "Cover letter generated",
-        description: "Your personalized cover letter is ready to download or copy.",
+        title: "API key needed",
+        description: "Please add your API key in the dashboard settings to generate cover letters.",
+        variant: "destructive",
       });
-    }, 5000);
+      setIsGeneratingCoverLetter(false);
+    }, 1500);
   };
 
   const renderStepContent = () => {
@@ -237,13 +144,23 @@ John Doe`;
       <Navbar />
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 page-transition">
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="text-center mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-3">
+              Your AI-powered <span className="text-gradient">career assistant</span>
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-3xl mx-auto">
+              Optimize your job applications with AI that analyzes job listings, 
+              evaluates your CV, and creates personalized cover letters that get you noticed.
+            </p>
+          </div>
+
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight">
               {step === 1 ? "Analyze Job Listing" : 
                step === 2 ? "Upload Your CV" : 
                "Results & Cover Letter"}
-            </h1>
+            </h2>
             <div className="text-sm text-gray-500">
               Step {step} of 3
             </div>
@@ -288,6 +205,16 @@ John Doe`;
           )}
         </div>
       </main>
+
+      <footer className="bg-gray-50 dark:bg-gray-900 py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-gray-500 dark:text-gray-400">
+              © {new Date().getFullYear()} CareerAI. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
